@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <title>Registrarse</title>
+</head>
+<body>
+    <div class="register-form">
+        <h1>Formulario de registro</h1>
+        <form action="/register" method="post">
+            <label for="user">Nombre de usuario</label>
+            <input type="text" name="user" id="user" required>
+
+            <label for="name">Nombre y Apellido</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="role">Rol</label>
+            <select name="role" id="role" class="select-css">
+                <option value="user">Usuario</option>
+                <option value="admin">Administrador</option>
+            </select>
+
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" id="pass" required>
+
+            <div style="display: inline-block">
+                <a href="/" class="btn-cancel">Cancelar</a><input type="submit" class="btn-save" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if (typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: "<%= alertTitle %>",
+                text: "<%= alertMessage %>",
+                icon: "<%= alertIcon %>",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location = "/<%= path %>";
+            });
+        </script>
+        <% } %>
+</body>
+</html>
