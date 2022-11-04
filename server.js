@@ -6,21 +6,17 @@ const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-// 3- Dotenv
-const dotenv = require("dotenv");
-dotenv.config({path:"./env/.env"});
-
-// 4- Set public dir
+// 3- Set public dir
 app.use("/resources", express.static("public"));
 app.use("/resources", express.static(__dirname + "/public"));
 
-// 5- Set view engine
+// 4- Set view engine
 app.set("view engine", "ejs");
 
-// 6- Bcryptjs
+// 5- Bcryptjs
 const bcryptjs = require("bcryptjs");
 
-// 7- Set session variables
+// 6- Set session variables
 const session = require("express-session");
 app.use(session({
     secret: "secret",
@@ -28,10 +24,10 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// 8- Set db connection
+// 7- Set db connection
 const connection = require("./database/db");
 
-// 9- Set routes
+// 8- Set routes
 app.get("/", (req, res) => {
     res.render("index", {user: req.session.user});
 });
@@ -118,6 +114,4 @@ app.get("/logout", (req, res) => {
     res.redirect("/");
 });
 
-app.listen(3000, (req, res) => {
-    console.log("Server running in http://localhost:3000");
-});
+app.listen(process.env.PORT || 3000);
