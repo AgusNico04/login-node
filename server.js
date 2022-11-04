@@ -18,7 +18,7 @@ const bcryptjs = require('bcryptjs');
 
 // 6- Set session variables
 app.set('trust proxy', 1);
-const session = require('cookie-session');
+const session = require('express-session');
 app.use(session({
     secret: 'secret',
     resave: false,
