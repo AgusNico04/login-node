@@ -117,4 +117,4 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-app.listen('0.0.0.0:$PORT' || 3000);
+app.listen(process.env.$PORT || 3000);
